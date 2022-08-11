@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import aston.studentlog.model.Log;
 import aston.studentlog.service.LogService;
 
 @RestController
+@RequestMapping("/log-list")
 public class LogController {
 
 	@Autowired
@@ -25,9 +27,9 @@ public class LogController {
 		return logService.getLogs();
 	}
 	
-	@GetMapping("/logs/{studentId}")
-	public List<Log> getStudentLogs(@PathVariable int studentId){
-		return logService.getStudentLogs(studentId);
+	@GetMapping("/logs/{id}")
+	public List<Log> getStudentLogs(@PathVariable int id){
+		return logService.getStudentLogs(id);
 	}
 	
 	@PutMapping("/logs")
@@ -40,7 +42,7 @@ public class LogController {
 	@PostMapping("/logs")
 	public Log addLog(@RequestBody Log theLog) {
 		
-		theLog.setId(0);
+//		theLog.setId(0);
 		logService.saveLog(theLog);				
 		return theLog;
 	}

@@ -51,10 +51,16 @@ public class StudentDAOImpl implements StudentDAO {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query theQuery = currentSession.createQuery("delete from Student where id=:studentId");
-		theQuery.setParameter("studentId", theId);
+		Query logQuery = currentSession.createQuery("delete from Log where student_id=:studentId");
 		
-		theQuery.executeUpdate();		
-	}
+		logQuery.setParameter("studentId", theId);
+		
+		logQuery.executeUpdate();
+		
+		Query studentQuery = currentSession.createQuery("delete from Student where id=:studentId");
 
+		studentQuery.setParameter("studentId", theId);
+
+		studentQuery.executeUpdate();
+	}
 }

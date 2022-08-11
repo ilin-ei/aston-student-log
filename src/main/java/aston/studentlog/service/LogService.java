@@ -12,6 +12,6 @@ public interface LogService {
 
 	public void deleteLog(int theId);
 	
-	public List<Log> getStudentLogs(int studentId);
+	public List<Log> getStudentLogs(int id);
 	
 }

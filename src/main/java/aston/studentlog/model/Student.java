@@ -24,7 +24,7 @@ public class Student {
 	private String name;
 
 	@OneToMany(mappedBy="student", 
-			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+			cascade = CascadeType.ALL)
 	private List<Log> logs;
 	
 	public Student() {

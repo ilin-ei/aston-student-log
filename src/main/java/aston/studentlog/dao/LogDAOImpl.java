@@ -42,22 +42,23 @@ public class LogDAOImpl implements LogDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		Query theQuery = currentSession.createQuery("delete from Log where id=:logId");
+		
 		theQuery.setParameter("logId", theId);
 		
 		theQuery.executeUpdate();		
 	}
 
 	@Override
-	public List<Log> getStudentLogs(int studentId) {
+	public List<Log> getStudentLogs(int id) {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query<Log> theQuery = currentSession.createQuery("from Log where student_id=:theId", Log.class);
-		theQuery.setParameter("theId", studentId);
+		Query theQuery = currentSession.createQuery("from Log where student_id=:theId");
 		
+		theQuery.setParameter("theId", id);
+
 		List<Log> logs = theQuery.getResultList();
 				
 		return logs;
 	}
-
 }

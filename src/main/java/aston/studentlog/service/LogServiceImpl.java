@@ -24,20 +24,20 @@ public class LogServiceImpl implements LogService {
 	@Override
 	@Transactional
 	public void saveLog(Log theLog) {
-
+		theLog.setId(0);
 		logDAO.saveLog(theLog);
 	}
 
 	@Override
 	@Transactional
-	public void deleteLog(int theId) {
-		
+	public void deleteLog(int theId) {		
 		logDAO.deleteLog(theId);
 	}
 
 	@Override
-	public List<Log> getStudentLogs(int studentId) {
-		return logDAO.getStudentLogs(studentId);
+	@Transactional
+	public List<Log> getStudentLogs(int id) {
+		return logDAO.getStudentLogs(id);
 	}
 
 }

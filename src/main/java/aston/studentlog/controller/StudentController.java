@@ -39,7 +39,7 @@ public class StudentController {
 		return theStudent;
 	}
 	
-	@DeleteMapping("/students/{customerId}")
+	@DeleteMapping("/students/{studentId}")
 	public String deleteStudent(@PathVariable int studentId){
 
 		studentService.deleteStudent(studentId);
